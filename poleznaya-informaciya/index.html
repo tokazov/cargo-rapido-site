@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Полезная информация — блог Cargo Rapido</title>
+  <meta name="description" content="Полезные статьи о грузоперевозках, таможне, логистике. Советы от экспертов Cargo Rapido.">
+  <link rel="canonical" href="https://cargorapido.com/poleznaya-informaciya/">
+  <link rel="stylesheet" href="/_style.css">
+  <style>
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .blog-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid var(--border); transition: all 0.3s; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .blog-img { height: 200px; background: linear-gradient(135deg, var(--primary) 0%, #283593 100%); display: flex; align-items: center; justify-content: center; font-size: 64px; }
+    .blog-body { padding: 24px; }
+    .blog-tag { background: var(--light); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; display: inline-block; margin-bottom: 12px; }
+    .blog-body h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 12px; line-height: 1.4; }
+    .blog-body p { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 16px; }
+    .blog-meta { font-size: 13px; color: var(--text-muted); }
+    .blog-body a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo"><span class="logo-icon">🚛</span><span class="logo-text">Cargo <strong>Rapido</strong></span></a>
+    <button class="burger" onclick="toggleMenu()">☰</button>
+    <nav id="main-nav">
+      <a href="/">Главная</a><a href="/about/">О компании</a>
+      <div class="dropdown"><a href="/nashi-uslugi/">Услуги ▾</a>
+        <div class="dropdown-menu">
+          <a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a>
+          <a href="/perevozka-lichnyh-veshchej/">Личные вещи</a>
+          <a href="/dostavka-v-evropu/">Доставка в Европу</a>
+          <a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/">Посылки и документы</a>
+          <a href="/perevozka-gruzov-pod-termorezhimom/">Термо-режим</a>
+          <a href="/skladskie-uslugi/">Склад</a>
+          <a href="/brokerskie-uslugi/">Брокерские услуги</a>
+        </div>
+      </div>
+      <a href="/poleznaya-informaciya/">Блог</a><a href="/kontakty/">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Главная</a><span>›</span>Полезная информация</div>
+    <h1>Полезная информация</h1>
+    <p>Советы, инструкции и новости из мира логистики и грузоперевозок</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img">📋</div>
+        <div class="blog-body">
+          <span class="blog-tag">Таможня</span>
+          <h3>Как растаможить груз из Грузии в Россию: пошаговая инструкция</h3>
+          <p>Подробный гид по таможенному оформлению товаров при ввозе из Грузии в Россию. Какие документы нужны, какие пошлины платить.</p>
+          <div class="blog-meta">15 марта 2024 · 8 мин чтения</div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img">📦</div>
+        <div class="blog-body">
+          <span class="blog-tag">Советы</span>
+          <h3>Как правильно упаковать груз для международной перевозки</h3>
+          <p>Основные правила упаковки товаров для безопасной перевозки. Как избежать повреждений в дороге и сократить расходы.</p>
+          <div class="blog-meta">1 марта 2024 · 5 мин чтения</div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img">💰</div>
+        <div class="blog-body">
+          <span class="blog-tag">Цены</span>
+          <h3>От чего зависит стоимость грузоперевозки из Грузии в Россию</h3>
+          <p>Разбираем все факторы, влияющие на цену: вес, объём, маршрут, тип груза, срочность. Как сэкономить на доставке.</p>
+          <div class="blog-meta">20 февраля 2024 · 6 мин чтения</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo"><span class="logo-icon">🚛</span><span class="logo-text">Cargo <strong>Rapido</strong></span></a>
+        <p style="margin-top:16px;">Надёжные грузоперевозки из Грузии в Россию, СНГ и Европу.</p>
+      </div>
+      <div><h4>Услуги</h4><ul>
+        <li><a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a></li>
+        <li><a href="/perevozka-lichnyh-veshchej/">Личные вещи</a></li>
+        <li><a href="/dostavka-v-evropu/">Доставка в Европу</a></li>
+      </ul></div>
+      <div><h4>Компания</h4><ul>
+        <li><a href="/about/">О компании</a></li>
+        <li><a href="/poleznaya-informaciya/">Блог</a></li>
+        <li><a href="/kontakty/">Контакты</a></li>
+      </ul></div>
+      <div class="footer-contacts"><h4>Контакты</h4>
+        <p>📍 Тбилиси, ул. Серго Закариадзе 5</p>
+        <p>💬 <a href="https://wa.me/995568644615" style="color:rgba(255,255,255,0.7);">+995 568 644 615</a></p>
+        <p>✈️ <a href="https://t.me/CARGORAPIDO" style="color:rgba(255,255,255,0.7);">@CARGORAPIDO</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Cargo Rapido. Все права защищены.</p></div>
+  </div>
+</footer>
+
+<a href="https://t.me/CargoRapidoAI_bot" target="_blank" class="chat-widget">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.281c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.94z"/></svg>
+  <span>Написать менеджеру</span>
+</a>
+<script src="/_shared.js"></script>
+</body>
+</html>

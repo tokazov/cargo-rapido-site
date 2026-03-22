@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cargorapido.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cargorapido.com/about/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cargorapido.com/nashi-uslugi/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://cargorapido.com/perevozka-kommercheskih-gruzov/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cargorapido.com/perevozka-lichnyh-veshchej/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cargorapido.com/dostavka-v-evropu/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cargorapido.com/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cargorapido.com/perevozka-gruzov-pod-termorezhimom/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://cargorapido.com/skladskie-uslugi/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://cargorapido.com/brokerskie-uslugi/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://cargorapido.com/poleznaya-informaciya/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://cargorapido.com/kontakty/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
