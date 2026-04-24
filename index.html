@@ -3,297 +3,525 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cargo Rapido — Грузоперевозки и доставка из Грузии в Россию и СНГ</title>
+  <title>Cargo Rapido — Грузоперевозки из Грузии в Россию и СНГ</title>
   <meta name="description" content="Надёжные грузоперевозки из Грузии в Россию, Казахстан, Беларусь и Европу. Более 10 лет на рынке. Коммерческие и личные грузы, доставка от двери до двери. Тбилиси.">
-  <meta property="og:title" content="Cargo Rapido — Грузоперевозки из Грузии">
-  <meta property="og:description" content="Надёжная доставка грузов и посылок из Грузии в Россию, СНГ и Европу. Звоните: +995568644615">
-  <meta property="og:url" content="https://cargorapido.com">
-  <link rel="canonical" href="https://cargorapido.com">
-  <link rel="stylesheet" href="/_style.css">
+  <link rel="canonical" href="https://cargorapido.com/">
+  <meta property="og:title" content="Cargo Rapido — Грузоперевозки из Грузии в Россию и СНГ">
+  <meta property="og:description" content="Надёжные грузоперевозки из Грузии в Россию, Казахстан, Беларусь и Европу. Более 10 лет на рынке.">
+  <meta property="og:url" content="https://cargorapido.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cargorapido.com/truck.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Cargo Rapido","description":"Транспортно-логистическая компания. Грузоперевозки из Грузии в Россию, СНГ и Европу.","address":{"@type":"PostalAddress","streetAddress":"ул. Серго Закариадзе 5","addressLocality":"Тбилиси","addressCountry":"GE"},"telephone":"+995568644615","openingHours":"Mo-Sa 10:00-17:00","url":"https://cargorapido.com"}
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Cargo Rapido",
+    "description": "Транспортно-логистическая компания. Грузоперевозки из Грузии в Россию, СНГ и Европу.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Серго Закариадзе 5",
+      "addressLocality": "Тбилиси",
+      "addressCountry": "GE"
+    },
+    "telephone": "+995568644615",
+    "openingHours": "Mo-Sa 10:00-17:00",
+    "url": "https://cargorapido.com",
+    "sameAs": [
+      "https://t.me/CARGORAPIDO",
+      "https://facebook.com/CargoRapido"
+    ]
+  }
   </script>
 </head>
 <body>
 
 <header>
-  <div class="container header-inner">
-    <a href="/" class="logo">
-      <span class="logo-icon">🚛</span>
-      <span class="logo-text">Cargo <strong>Rapido</strong></span>
-    </a>
-    <button class="burger" onclick="toggleMenu()">☰</button>
-    <nav id="main-nav">
-      <a href="/">Главная</a>
-      <a href="/about/">О компании</a>
-      <div class="dropdown">
-        <a href="/nashi-uslugi/">Услуги ▾</a>
-        <div class="dropdown-menu">
-          <a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a>
-          <a href="/perevozka-lichnyh-veshchej/">Личные вещи</a>
-          <a href="/dostavka-v-evropu/">Доставка в Европу</a>
-          <a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/">Посылки и документы</a>
-          <a href="/perevozka-gruzov-pod-termorezhimom/">Термо-режим</a>
-          <a href="/skladskie-uslugi/">Склад</a>
-          <a href="/brokerskie-uslugi/">Брокерские услуги</a>
-        </div>
+  <a href="/" class="logo"><div class="logo-box">🚛</div> Cargo Rapido</a>
+  <button class="burger" onclick="toggleMenu()">☰</button>
+  <nav class="header-nav" id="main-nav">
+    <a href="/about/">О компании</a>
+    <div class="dropdown">
+      <a href="/nashi-uslugi/">Услуги ▾</a>
+      <div class="dropdown-menu">
+        <a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a>
+        <a href="/perevozka-lichnyh-veshchej/">Личные вещи</a>
+        <a href="/dostavka-v-evropu/">Доставка в Европу</a>
+        <a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/">Посылки и документы</a>
+        <a href="/perevozka-gruzov-pod-termorezhimom/">Термо-режим</a>
+        <a href="/skladskie-uslugi/">Складские услуги</a>
+        <a href="/brokerskie-uslugi/">Брокерские услуги</a>
+        <a href="/perevozka-avtomobilya-na-avtovoze/">Перевозка автомобиля на автовозе</a>
+        <a href="/perevozka-avtomobilya-na-evakuatore/">Перевозка автомобиля на эвакуаторе</a>
       </div>
-      <a href="/poleznaya-informaciya/">Блог</a>
-      <a href="/kontakty/">Контакты</a>
-    </nav>
-  </div>
+    </div>
+    <a href="/poleznaya-informaciya/">Блог</a>
+    <a href="/kontakty/">Контакты</a>
+    <a href="https://wa.me/995568644615" class="nav-phone"><i class="fab fa-whatsapp" style="color:#25D366"></i> +995 568 644 615</a>
+    <a href="https://t.me/CARGORAPIDO" target="_blank" class="nav-phone nav-cta">Заявка</a>
+  </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <h1>Грузоперевозки из <span>Грузии</span><br>в Россию и СНГ</h1>
-    <p>Более 10 лет надёжной доставки грузов, посылок и документов. Коммерческие и личные грузы от двери до двери.</p>
+<div class="hero-split">
+  <div class="hero-left">
+    <div class="hero-tag">🌍 Грузия · Россия · СНГ · Европа</div>
+    <h1>Грузоперевозки<br>из Грузии<br>в <em>Россию</em></h1>
+    <p>Более 10 лет надёжной доставки. Собственный автопарк, склады в Тбилиси и Москве, таможенный брокер в штате.</p>
     <div class="hero-btns">
-      <a href="#calc" class="btn btn-primary">📦 Рассчитать доставку</a>
-      <a href="https://wa.me/995568644615" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+      <a href="https://t.me/CARGORAPIDO" target="_blank" class="btn-dark"><i class="fas fa-calculator"></i> Рассчитать</a>
+      <a href="https://wa.me/995568644615" target="_blank" class="btn-green"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><i class="fas fa-shield-alt trust-icon"></i> Страховка</div>
+      <div class="trust-item"><i class="fas fa-map-marker-alt trust-icon"></i> GPS-трекинг</div>
+      <div class="trust-item"><i class="fas fa-handshake trust-icon"></i> Гарантия</div>
+      <div class="trust-item"><i class="fas fa-clock trust-icon"></i> Пн-Сб 10-17</div>
     </div>
   </div>
-</section>
+  <div class="hero-right">
+    <img src="/truck.jpg" alt="Cargo Rapido — грузоперевозки из Грузии">
+    <div class="hero-overlay"></div>
+    <div class="hero-cards">
+      <div class="hcard">
+        <div class="hcard-label">Менеджер онлайн</div>
+        <div class="hcard-row">
+          <div class="hcard-dot"></div>
+          <div>
+            <div class="hcard-name">Наталья · отвечает сейчас</div>
+            <div class="hcard-time">Среднее время ответа: 3 мин</div>
+          </div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-label">Активных доставок</div>
+        <div class="hcard-val">48</div>
+        <div class="hcard-row" style="margin-top:8px;">
+          <div class="hcard-dot orange"></div>
+          <div class="hcard-sub">12 на таможне · 36 в пути</div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-label">Следующая отправка</div>
+        <div class="hcard-row">
+          <span style="font-size:24px;">🚛</span>
+          <div>
+            <div class="hcard-name">Тбилиси → Москва</div>
+            <div class="hcard-time">Ближайший рейс</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Россия</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Россия → Грузия</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Казахстан</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Беларусь</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Европа</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Таможенное оформление</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Складские услуги</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> GPS-трекинг 24/7</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Россия</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Россия → Грузия</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Казахстан</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Беларусь</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Грузия → Европа</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Таможенное оформление</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> Складские услуги</div>
+    <div class="marquee-item"><div class="marquee-dot"></div> GPS-трекинг 24/7</div>
+  </div>
+</div>
 
 <!-- STATS -->
-<section class="section section-light">
-  <div class="container">
-    <div class="stats">
-      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">лет на рынке</div></div>
-      <div class="stat"><div class="stat-num">3-15</div><div class="stat-label">дней доставка</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">грузов застрахованы</div></div>
-      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">менеджер онлайн</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DIRECTIONS -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title text-center">Направления доставки</h2>
-    <p class="section-sub text-center">Работаем по всем ключевым маршрутам из Грузии</p>
-    <div class="directions" style="justify-content:center; margin-bottom: 40px;">
-      <span class="direction-tag">🇬🇪 Грузия → 🇷🇺 Россия</span>
-      <span class="direction-tag">🇷🇺 Россия → 🇬🇪 Грузия</span>
-      <span class="direction-tag">🇬🇪 → 🇰🇿 Казахстан</span>
-      <span class="direction-tag">🇬🇪 → 🇧🇾 Беларусь</span>
-      <span class="direction-tag">🇬🇪 → 🇪🇺 Европа</span>
-      <span class="direction-tag">Международная доставка</span>
-    </div>
+<section class="section" style="padding-bottom:0">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-val">10<span class="stat-unit">+</span></div><div class="stat-label">лет на рынке</div></div>
+    <div class="stat-card"><div class="stat-val">5000<span class="stat-unit">+</span></div><div class="stat-label">доставленных грузов</div></div>
+    <div class="stat-card"><div class="stat-val">15<span class="stat-unit">+</span></div><div class="stat-label">стран назначения</div></div>
+    <div class="stat-card"><div class="stat-val">98<span class="stat-unit">%</span></div><div class="stat-label">довольных клиентов</div></div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="section section-light">
-  <div class="container">
-    <h2 class="section-title text-center">Наши услуги</h2>
-    <p class="section-sub text-center">Полный спектр транспортно-логистических решений</p>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">🏭</div>
-        <h3>Коммерческие грузы</h3>
-        <p>Перевозка товаров для бизнеса. GPS-трекинг, страховка, таможенное оформление.</p>
-        <a href="/perevozka-kommercheskih-gruzov/">Подробнее →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">📦</div>
-        <h3>Личные вещи и переезды</h3>
-        <p>Бережная перевозка личного имущества. Упаковка, страховка, доставка под ключ.</p>
-        <a href="/perevozka-lichnyh-veshchej/">Подробнее →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">✈️</div>
-        <h3>Доставка в Европу</h3>
-        <p>Авиа и авто доставка в европейские страны. Быстро и надёжно.</p>
-        <a href="/dostavka-v-evropu/">Подробнее →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">📮</div>
-        <h3>Посылки и документы</h3>
-        <p>Экспресс-доставка писем, посылок и документов по всему миру.</p>
-        <a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/">Подробнее →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">❄️</div>
-        <h3>Грузы с термо-режимом</h3>
-        <p>Перевозка продуктов питания, медикаментов и других температурочувствительных грузов.</p>
-        <a href="/perevozka-gruzov-pod-termorezhimom/">Подробнее →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏗️</div>
-        <h3>Складские услуги</h3>
-        <p>Хранение грузов на складах в Тбилиси, Москве и Владикавказе.</p>
-        <a href="/skladskie-uslugi/">Подробнее →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">📋</div>
-        <h3>Брокерские услуги</h3>
-        <p>Таможенное оформление, подбор кодов ТН ВЭД, расчёт платежей.</p>
-        <a href="/brokerskie-uslugi/">Подробнее →</a>
-      </div>
-    </div>
+<section class="section">
+  <div class="sec-tag">Что мы делаем</div>
+  <div class="sec-h2">Наши услуги</div>
+  <div class="svc-grid">
+    <a href="/perevozka-kommercheskih-gruzov/" class="svc">
+      <div class="svc-num">01</div><div class="svc-ico">🚛</div>
+      <h3>Коммерческие грузы</h3>
+      <p>Перевозка товаров Грузия–Россия–Казахстан–Беларусь. GPS, страховка, таможня.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/perevozka-lichnyh-veshchej/" class="svc">
+      <div class="svc-num">02</div><div class="svc-ico">📦</div>
+      <h3>Личные вещи</h3>
+      <p>Переезды и перевозка личного имущества. Бережная упаковка, страховка.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/dostavka-v-evropu/" class="svc">
+      <div class="svc-num">03</div><div class="svc-ico">✈️</div>
+      <h3>Доставка в Европу</h3>
+      <p>Авиа и авто доставка в любую страну Европейского союза.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/brokerskie-uslugi/" class="svc">
+      <div class="svc-num">04</div><div class="svc-ico">📋</div>
+      <h3>Таможенный брокер</h3>
+      <p>Полное таможенное оформление. Коды ТН ВЭД, расчёт платежей.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/" class="svc">
+      <div class="svc-num">05</div><div class="svc-ico">📮</div>
+      <h3>Посылки и документы</h3>
+      <p>Доставка посылок, писем и документов по всему миру. Быстро и безопасно.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/perevozka-gruzov-pod-termorezhimom/" class="svc">
+      <div class="svc-num">06</div><div class="svc-ico">❄️</div>
+      <h3>Термо-режим</h3>
+      <p>Перевозка грузов, требующих контроля температуры. Фармацевтика, продукты.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/skladskie-uslugi/" class="svc">
+      <div class="svc-num">07</div><div class="svc-ico">🏭</div>
+      <h3>Складские услуги</h3>
+      <p>Собственный склад в Тбилиси. Хранение, сортировка, маркировка грузов.</p>
+      <div class="svc-link">Подробнее <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/nashi-uslugi/" class="svc">
+      <div class="svc-num">08</div><div class="svc-ico">🌐</div>
+      <h3>Все услуги</h3>
+      <p>Ознакомьтесь с полным перечнем транспортно-логистических услуг компании.</p>
+      <div class="svc-link">Смотреть все <i class="fas fa-arrow-right"></i></div>
+    </a>
   </div>
 </section>
 
 <!-- WHY US -->
+<section class="section section-light">
+  <div class="sec-tag">Почему выбирают нас</div>
+  <div class="sec-h2">Наши преимущества</div>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-ico">🛡️</div><h3>Страховка груза</h3><p>Каждый груз застрахован. Вы получите компенсацию в случае любого инцидента.</p></div>
+    <div class="why-item"><div class="why-ico">📍</div><h3>GPS-трекинг</h3><p>Следите за местонахождением груза онлайн в режиме реального времени.</p></div>
+    <div class="why-item"><div class="why-ico">📜</div><h3>Таможня под ключ</h3><p>Собственный брокер. Оформляем таможенные документы без вашего участия.</p></div>
+    <div class="why-item"><div class="why-ico">🚀</div><h3>Быстрая доставка</h3><p>Регулярные рейсы Тбилиси–Москва. Срок доставки от 3 до 7 дней.</p></div>
+    <div class="why-item"><div class="why-ico">💬</div><h3>Менеджер онлайн</h3><p>Персональный менеджер на связи с вами от заявки до получения груза.</p></div>
+    <div class="why-item"><div class="why-ico">💰</div><h3>Честные цены</h3><p>Фиксированная стоимость без скрытых доплат. Расчёт за 5 минут.</p></div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
 <section class="section">
-  <div class="container">
-    <h2 class="section-title text-center">Почему выбирают Cargo Rapido</h2>
-    <p class="section-sub text-center">Ваш груз в надёжных руках</p>
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">🛡️</div>
+  <div class="sec-tag">Процесс</div>
+  <div class="sec-h2">Как мы работаем</div>
+  <div class="steps-grid">
+    <div class="step-item">
+      <div class="step-num">01</div>
+      <h3>Заявка за 2 минуты</h3>
+      <p>Напишите в Telegram или WhatsApp: маршрут, тип груза, вес. Рассчитаем стоимость за 5 минут — без ожидания и бюрократии.</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">02</div>
+      <h3>Приём и упаковка</h3>
+      <p>Привезите груз на склад в Тбилиси или вызовите курьера. Упакуем, взвесим, сфотографируем. Подпишем накладную.</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">03</div>
+      <h3>Таможня и отправка</h3>
+      <p>Наш брокер оформляет все документы. Груз отправляется с ближайшим рейсом. Вы получаете трек-номер и ссылку на GPS.</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">04</div>
+      <h3>Доставка до двери</h3>
+      <p>Груз доставляется по указанному адресу. Уведомление о прибытии — в Telegram или WhatsApp. Подпись при получении.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="section section-light">
+  <div class="sec-tag">Маршруты</div>
+  <div class="sec-h2">Куда мы доставляем</div>
+  <div class="routes-grid">
+    <div class="route-card">
+      <div class="route-flag">🇷🇺</div>
+      <h3>Россия</h3>
+      <div class="route-time"><i class="fas fa-clock"></i> 3–7 дней</div>
+      <p>Москва, Санкт-Петербург, Краснодар, Ростов-на-Дону. Регулярные рейсы 2 раза в неделю.</p>
+      <div class="route-price">от 1.5 $ / кг</div>
+    </div>
+    <div class="route-card">
+      <div class="route-flag">🇰🇿</div>
+      <h3>Казахстан</h3>
+      <div class="route-time"><i class="fas fa-clock"></i> 7–12 дней</div>
+      <p>Алматы, Астана, Шымкент. Транзит через Россию. Полное таможенное оформление.</p>
+      <div class="route-price">от 2 $ / кг</div>
+    </div>
+    <div class="route-card">
+      <div class="route-flag">🌍</div>
+      <h3>Европа</h3>
+      <div class="route-time"><i class="fas fa-clock"></i> 7–14 дней</div>
+      <p>Германия, Польша, Италия, Болгария и другие страны ЕС. Авто и авиа.</p>
+      <div class="route-price">от 2.5 $ / кг</div>
+    </div>
+    <div class="route-card">
+      <div class="route-flag">🇹🇷</div>
+      <h3>Турция</h3>
+      <div class="route-time"><i class="fas fa-clock"></i> 2–4 дня</div>
+      <p>Стамбул, Анкара, Трабзон. Прямой маршрут без пересадок.</p>
+      <div class="route-price">от 1.8 $ / кг</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+  <div class="sec-tag">Отзывы клиентов</div>
+  <div class="sec-h2">Что говорят о нас</div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Перевозили вещи при переезде из Тбилиси в Москву. Всё упаковали аккуратно, ни одна вещь не повредилась. Груз пришёл за 5 дней. Менеджер Наталья была на связи в любое время — отвечала даже в 10 вечера. Рекомендую!»</p>
+      <div class="review-author">
+        <div class="review-avatar">А</div>
         <div>
-          <h4>Надёжность</h4>
-          <p>Персональный менеджер 24/7, полный пакет документов: чеки, договоры, накладные.</p>
+          <div class="review-name">Алексей К.</div>
+          <div class="review-city">Москва · переезд из Тбилиси</div>
         </div>
       </div>
-      <div class="feature">
-        <div class="feature-icon">📍</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Отправляем товары из Грузии в Россию уже два года. Cargo Rapido — наш постоянный партнёр. Ни разу не было проблем с таможней, все документы оформляют сами. Цены честные, без сюрпризов.»</p>
+      <div class="review-author">
+        <div class="review-avatar">М</div>
         <div>
-          <h4>GPS-трекинг</h4>
-          <p>Отслеживайте груз в режиме реального времени. Вы всегда знаете где ваш груз.</p>
+          <div class="review-name">Маргарита В.</div>
+          <div class="review-city">ИП · регулярные поставки</div>
         </div>
       </div>
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Отправлял грузинское вино в Казахстан — это очень специфический груз с кучей сертификатов. Ребята разобрались со всеми документами, вино дошло в целости. Буду работать только с ними.»</p>
+      <div class="review-author">
+        <div class="review-avatar">Н</div>
         <div>
-          <h4>Быстрая доставка</h4>
-          <p>3-15 дней. Наши машины не стоят в очереди на границе с РФ — экономим ваше время.</p>
+          <div class="review-name">Нурлан А.</div>
+          <div class="review-city">Алматы · экспорт продуктов</div>
         </div>
       </div>
-      <div class="feature">
-        <div class="feature-icon">🏠</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">«Перевозил автомобиль на автовозе из Тбилиси в Краснодар. Машина пришла без царапин, всё быстро. Единственное — хотелось бы чуть больше уведомлений по дороге, но в целом очень доволен.»</p>
+      <div class="review-author">
+        <div class="review-avatar">С</div>
         <div>
-          <h4>От двери до двери</h4>
-          <p>Забираем с вашего адреса, доставляем получателю. Не нужно никуда ехать.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📄</div>
-        <div>
-          <h4>Таможенный брокер</h4>
-          <p>Берём на себя всё таможенное оформление. Снижаем расходы на платежи.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">💰</div>
-        <div>
-          <h4>Выгодные цены</h4>
-          <p>Одни из лучших цен на рынке. Точный расчёт стоимости до начала перевозки.</p>
+          <div class="review-name">Сергей Р.</div>
+          <div class="review-city">Краснодар · перевозка авто</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CALCULATOR / REQUEST FORM -->
-<section class="section section-light" id="calc">
-  <div class="container">
-    <h2 class="section-title text-center">Рассчитать стоимость доставки</h2>
-    <p class="section-sub text-center">Заполните форму — менеджер свяжется в течение 15 минут</p>
-    <div class="request-form">
-      <form onsubmit="submitForm(event)">
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Ваше имя *</label>
-            <input type="text" name="name" placeholder="Иван Иванов" required>
-          </div>
-          <div class="form-group">
-            <label>Телефон / WhatsApp *</label>
-            <input type="tel" name="phone" placeholder="+7 999 123 45 67" required>
-          </div>
-          <div class="form-group">
-            <label>Откуда</label>
-            <input type="text" name="from" placeholder="Тбилиси, Грузия">
-          </div>
-          <div class="form-group">
-            <label>Куда</label>
-            <input type="text" name="to" placeholder="Москва, Россия">
-          </div>
-          <div class="form-group">
-            <label>Описание груза</label>
-            <input type="text" name="cargo" placeholder="Коммерческий товар, личные вещи...">
-          </div>
-          <div class="form-group">
-            <label>Вес (кг)</label>
-            <input type="number" name="weight" placeholder="100">
-          </div>
-          <div class="form-group full">
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; font-size:17px; padding:16px;">
-              📲 Отправить заявку в WhatsApp
-            </button>
-          </div>
+<!-- CALCULATOR -->
+<section class="section section-light">
+  <div class="sec-tag">Быстрый расчёт</div>
+  <div class="sec-h2">Рассчитайте стоимость доставки</div>
+  <div class="calc-wrap">
+    <div class="calc-box">
+      <div class="calc-grid">
+        <div class="form-group">
+          <label><i class="fas fa-map-marker-alt" style="color:#ff6f00;margin-right:6px;"></i> Откуда</label>
+          <select id="calc-from">
+            <option>Тбилиси</option>
+            <option>Батуми</option>
+            <option>Кутаиси</option>
+            <option>Москва (обратный)</option>
+          </select>
         </div>
-      </form>
+        <div class="form-group">
+          <label><i class="fas fa-map-marker" style="color:#e63030;margin-right:6px;"></i> Куда</label>
+          <select id="calc-to">
+            <option>Москва</option>
+            <option>Санкт-Петербург</option>
+            <option>Краснодар / Ростов</option>
+            <option>Казахстан</option>
+            <option>Беларусь</option>
+            <option>Европа</option>
+            <option>Турция</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-box" style="color:#1a237e;margin-right:6px;"></i> Тип груза</label>
+          <select id="calc-type">
+            <option>Личные вещи / переезд</option>
+            <option>Коммерческий груз</option>
+            <option>Посылка / документы</option>
+            <option>Автомобиль</option>
+            <option>Рефгруз (термо-режим)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-weight-hanging" style="color:#1a237e;margin-right:6px;"></i> Примерный вес (кг)</label>
+          <input type="number" id="calc-weight" placeholder="Например: 50" min="1">
+        </div>
+      </div>
+      <a href="https://t.me/CARGORAPIDO" target="_blank" class="btn-dark calc-btn" onclick="buildTgLink(event)">
+        <i class="fab fa-telegram"></i> Узнать стоимость в Telegram
+      </a>
+      <p class="calc-note">Менеджер ответит за 5 минут и назовёт точную цену</p>
     </div>
+    <div class="calc-info">
+      <div class="calc-info-item">
+        <div class="calc-info-ico"><i class="fas fa-clock"></i></div>
+        <div>
+          <strong>Ответ за 5 минут</strong>
+          <span>В рабочие часы Пн-Сб 10:00–17:00</span>
+        </div>
+      </div>
+      <div class="calc-info-item">
+        <div class="calc-info-ico"><i class="fas fa-robot"></i></div>
+        <div>
+          <strong>Бот работает 24/7</strong>
+          <span>@cargo_rapido_bot — расчёт в любое время</span>
+        </div>
+      </div>
+      <div class="calc-info-item">
+        <div class="calc-info-ico"><i class="fas fa-tags"></i></div>
+        <div>
+          <strong>Фиксированная цена</strong>
+          <span>Без скрытых доплат и сюрпризов</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section class="section">
+  <div class="sec-tag">Полезные статьи</div>
+  <div class="sec-h2">Блог</div>
+  <div class="blog-grid">
+    <a href="/poleznaya-informaciya/post/perevozka-lichnyh-veshchej-iz-gruzii-v-rossiyu-v-usloviyah-sankcij/" class="blog-card">
+      <div class="blog-date">25 ноября 2025</div>
+      <h3>Перевозка личных вещей из Грузии в Россию в условиях санкций</h3>
+      <p>Как легально перевезти личные вещи. Ограничения, документы, партии до 30 кг.</p>
+      <div class="blog-read">Читать <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/poleznaya-informaciya/post/aviadostavka-iz-gruzii-v-rossiyu/" class="blog-card">
+      <div class="blog-date">5 марта 2025</div>
+      <h3>Авиадоставка грузов и личных вещей в Россию</h3>
+      <p>Быстрая авиадоставка из Тбилиси в Москву с таможенным оформлением.</p>
+      <div class="blog-read">Читать <i class="fas fa-arrow-right"></i></div>
+    </a>
+    <a href="/poleznaya-informaciya/post/perevozka-sbornyh-gruzov/" class="blog-card">
+      <div class="blog-date">23 ноября 2024</div>
+      <h3>Перевозка сборных грузов из Грузии</h3>
+      <p>Экономная доставка сборных грузов от одной паллеты в Россию и СНГ.</p>
+      <div class="blog-read">Читать <i class="fas fa-arrow-right"></i></div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="/poleznaya-informaciya/" class="btn-dark" style="display:inline-flex;gap:8px;align-items:center;">
+      <i class="fas fa-book-open"></i> Все статьи
+    </a>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Есть вопросы? Напишите нам прямо сейчас</h2>
-      <p>Менеджер ответит в течение 15 минут и рассчитает стоимость доставки</p>
-      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="https://t.me/CARGORAPIDO" target="_blank" class="btn btn-outline">✈️ Telegram</a>
-        <a href="https://wa.me/995568644615" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
-      </div>
-    </div>
+<section class="cta-banner">
+  <h2>Нужна перевозка из Грузии?</h2>
+  <p>Напишите нам — рассчитаем стоимость за 5 минут и подберём оптимальный маршрут.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://t.me/CARGORAPIDO" target="_blank" class="btn-dark"><i class="fab fa-telegram"></i> Написать в Telegram</a>
+    <a href="https://wa.me/995568644615" target="_blank" class="btn-green"><i class="fab fa-whatsapp"></i> WhatsApp</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="logo"><span class="logo-icon">🚛</span><span class="logo-text">Cargo <strong>Rapido</strong></span></a>
-        <p style="margin-top:16px;">Надёжные грузоперевозки из Грузии в Россию, СНГ и Европу. Более 10 лет на рынке.</p>
-        <div class="social-links">
-          <a href="https://t.me/CARGORAPIDO" target="_blank">✈️</a>
-          <a href="https://wa.me/995568644615" target="_blank">💬</a>
-          <a href="https://facebook.com/CargoRapido" target="_blank">📘</a>
-        </div>
-      </div>
-      <div>
-        <h4>Услуги</h4>
-        <ul>
-          <li><a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a></li>
-          <li><a href="/perevozka-lichnyh-veshchej/">Личные вещи</a></li>
-          <li><a href="/dostavka-v-evropu/">Доставка в Европу</a></li>
-          <li><a href="/skladskie-uslugi/">Склад</a></li>
-          <li><a href="/brokerskie-uslugi/">Брокерские услуги</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Компания</h4>
-        <ul>
-          <li><a href="/about/">О компании</a></li>
-          <li><a href="/poleznaya-informaciya/">Блог</a></li>
-          <li><a href="/kontakty/">Контакты</a></li>
-        </ul>
-      </div>
-      <div class="footer-contacts">
-        <h4>Контакты</h4>
-        <p>📍 Тбилиси, ул. Серго Закариадзе 5</p>
-        <p>💬 <a href="https://wa.me/995568644615" style="color:rgba(255,255,255,0.7);">+995 568 644 615</a></p>
-        <p>✈️ <a href="https://t.me/CARGORAPIDO" style="color:rgba(255,255,255,0.7);">@CARGORAPIDO</a></p>
-        <p>🕐 Пн-Сб: 10:00–17:00</p>
-      </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo"><div class="logo-box">🚛</div> Cargo Rapido</a>
+      <p style="margin-top:16px;">Транспортно-логистическая компания. Грузоперевозки из Грузии в Россию, СНГ и Европу с 2014 года.</p>
+      <p style="margin-top:12px;">Грузия, г. Тбилиси,<br>ул. Серго Закариадзе 5</p>
+      <p style="margin-top:8px;">Пн-Сб 10:00–17:00</p>
     </div>
-    <div class="footer-bottom">
-      <p>© 2024 Cargo Rapido. Все права защищены.</p>
+    <div class="footer-col">
+      <h4>Услуги</h4>
+      <ul>
+        <li><a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a></li>
+        <li><a href="/perevozka-lichnyh-veshchej/">Личные вещи</a></li>
+        <li><a href="/dostavka-v-evropu/">Доставка в Европу</a></li>
+        <li><a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/">Посылки и документы</a></li>
+        <li><a href="/perevozka-gruzov-pod-termorezhimom/">Термо-режим</a></li>
+        <li><a href="/skladskie-uslugi/">Склад</a></li>
+        <li><a href="/brokerskie-uslugi/">Брокерские услуги</a></li>
+      </ul>
     </div>
+    <div class="footer-col">
+      <h4>Компания</h4>
+      <ul>
+        <li><a href="/about/">О компании</a></li>
+        <li><a href="/poleznaya-informaciya/">Блог</a></li>
+        <li><a href="/kontakty/">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="https://wa.me/995568644615">+995 568 644 615</a></li>
+        <li><a href="https://t.me/CARGORAPIDO" target="_blank">Telegram</a></li>
+        <li><a href="https://facebook.com/CargoRapido" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Cargo Rapido. Все права защищены.</p>
+    <p><a href="/sitemap.xml" style="color:rgba(255,255,255,0.4);text-decoration:none;">Карта сайта</a></p>
   </div>
 </footer>
 
-<a href="https://t.me/CargoRapidoAI_bot" target="_blank" class="chat-widget">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.281c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.94z"/></svg>
-  <span>Написать менеджеру</span>
-</a>
+<!-- CHAT WIDGET -->
+<div class="chat-widget">
+  <div class="chat-bubble">
+    <div class="cb-header">
+      <div class="cb-avatar">👩</div>
+      <div>
+        <div class="cb-name">Наталья</div>
+        <div class="cb-status">Онлайн сейчас</div>
+      </div>
+    </div>
+    <div class="cb-text">Здравствуйте! Готова рассчитать стоимость доставки. Напишите маршрут и вес груза 😊</div>
+    <a href="https://t.me/CARGORAPIDO" target="_blank" class="cb-btn">✈️ Написать в Telegram</a>
+  </div>
+  <a href="https://t.me/CARGORAPIDO" target="_blank" class="chat-trigger">
+    💬
+    <div class="chat-badge"></div>
+  </a>
+</div>
 
-<script src="/_shared.js"></script>
+<script>
+function buildTgLink(e) {
+  e.preventDefault();
+  var from = document.getElementById('calc-from').value;
+  var to = document.getElementById('calc-to').value;
+  var type = document.getElementById('calc-type').value;
+  var weight = document.getElementById('calc-weight').value || 'не указан';
+  var msg = encodeURIComponent('Здравствуйте! Хочу узнать стоимость доставки:\nОткуда: ' + from + '\nКуда: ' + to + '\nТип груза: ' + type + '\nВес: ' + weight + ' кг');
+  window.open('https://t.me/CARGORAPIDO?text=' + msg, '_blank');
+}
+</script>
+<script src="/shared.js"></script>
 </body>
 </html>

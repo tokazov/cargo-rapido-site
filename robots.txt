@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /generate_pages.py
+
 Sitemap: https://cargorapido.com/sitemap.xml
