@@ -730,63 +730,42 @@ footer {
 }
 
 /* ===== WHATSAPP WIDGET ===== */
+/* ===== CONTACT WIDGET (3 round buttons) ===== */
 #wa-widget {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
 }
-.wa-trigger {
-  width: 60px;
-  height: 60px;
-  background: #25D366;
-  border: none;
+.wa-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+.wa-btn {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-  z-index: 2;
-}
-.wa-trigger:hover { transform: scale(1.1); }
-.wa-trigger.active { transform: rotate(90deg); }
-.wa-menu {
-  position: absolute;
-  bottom: 70px;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.25s ease;
-}
-.wa-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
-.wa-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  color: white;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  white-space: nowrap;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.wa-menu-item:hover { transform: translateX(-4px); }
-.wa-item { background: #25D366; }
-.tg-item { background: #0088cc; }
+.wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+.wa-btn-tg { background: #0088cc; }
+.wa-btn-wa { background: #25D366; }
+.wa-btn-call { background: #ff6f00; }
 .wa-bubble {
   position: absolute;
-  bottom: 70px;
-  right: 70px;
+  bottom: 196px;
+  right: 66px;
   background: white;
   border-radius: 12px 12px 0 12px;
   padding: 14px 16px;
