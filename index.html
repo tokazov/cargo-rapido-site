@@ -709,35 +709,6 @@ function toggleFaq(btn) {
 </footer>
 
 <!-- CHAT WIDGET -->
-<div class="chat-widget">
-  <div class="chat-bubble">
-    <div class="cb-header">
-      <div class="cb-avatar">👩</div>
-      <div>
-        <div class="cb-name">Наталья</div>
-        <div class="cb-status">Онлайн сейчас</div>
-      </div>
-    </div>
-    <div class="cb-text">Здравствуйте! Готова рассчитать стоимость доставки. Напишите маршрут и вес груза 😊</div>
-    <a href="https://t.me/CARGORAPIDO" target="_blank" class="cb-btn">✈️ Написать в Telegram</a>
-  </div>
-  <a href="https://t.me/CARGORAPIDO" target="_blank" class="chat-trigger">
-    💬
-    <div class="chat-badge"></div>
-  </a>
-</div>
-
-<script>
-function buildTgLink(e) {
-  e.preventDefault();
-  var from = document.getElementById('calc-from').value;
-  var to = document.getElementById('calc-to').value;
-  var type = document.getElementById('calc-type').value;
-  var weight = document.getElementById('calc-weight').value || 'не указан';
-  var msg = encodeURIComponent('Здравствуйте! Хочу узнать стоимость доставки:\nОткуда: ' + from + '\nКуда: ' + to + '\nТип груза: ' + type + '\nВес: ' + weight + ' кг');
-  window.open('https://t.me/CARGORAPIDO?text=' + msg, '_blank');
-}
-</script>
 <script src="/shared.js"></script>
 </body>
 </html>
