@@ -1,0 +1,21 @@
+{
+  "name": "Cargo Rapido",
+  "short_name": "CargoRapido",
+  "description": "Грузоперевозки из Грузии в Россию, СНГ и Европу",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#e63946",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
