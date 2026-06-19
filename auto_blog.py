@@ -360,25 +360,23 @@ def update_sitemap(slug: str):
 def update_blog_index(title: str, description: str, slug: str, image: str = 'truck.jpg'):
     index_path = BASE / 'poleznaya-informaciya' / 'index.html'
     index = index_path.read_text()
-    card = f'''
-    <div class="blog-card">
-      <a href="/poleznaya-informaciya/post/{slug}/">
-        <img src="/{image}" alt="{title}" loading="lazy">
+
+    # Формат карточки совпадает с существующими article.blog-card на сайте
+    date_ru = datetime.now().strftime('%-d %B %Y').upper()
+    card = f'''    <article class="blog-card">
+      <a href="/poleznaya-informaciya/post/{slug}/" class="blog-card-link-wrap">
+        <div class="blog-card-img" style="background-image:url('/{image}')"></div>
         <div class="blog-card-body">
-          <span class="blog-date">{TODAY}</span>
-          <h3>{title}</h3>
-          <p>{description[:120]}...</p>
-          <span class="read-more">Читать →</span>
+          <div class="blog-card-date">{TODAY}</div>
+          <h2 class="blog-card-title">{title}</h2>
+          <p class="blog-card-desc">{description[:120]}</p>
+          <span class="blog-card-link">Читать →</span>
         </div>
       </a>
-    </div>'''
-    # Вставляем первой карточкой в сетку блога
-    marker = '<!-- BLOG_CARDS_START -->'
-    if marker in index:
-        index = index.replace(marker, marker + card)
-    else:
-        # Fallback: вставляем перед первой blog-card
-        index = index.replace('<div class="blog-card">', card + '\n    <div class="blog-card">', 1)
+    </article>\n'''
+
+    # Вставляем первой карточкой внутри blog-grid
+    index = index.replace('<div class="blog-grid">\n', '<div class="blog-grid">\n' + card)
     index_path.write_text(index)
     print(f'  blog index updated')
 
