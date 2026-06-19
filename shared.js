@@ -91,3 +91,24 @@ function closeBubble() {
   const bubble = document.getElementById('wa-bubble');
   if (bubble) bubble.classList.remove('visible');
 }
+
+// ===== CALCULATOR: Build Telegram link with form data =====
+function buildTgLink(e) {
+  var from = (document.getElementById('calc-from')?.value || '').trim();
+  var to   = (document.getElementById('calc-to')?.value || '').trim();
+  var type = (document.getElementById('calc-type')?.value || '').trim();
+  var w    = (document.getElementById('calc-weight')?.value || '').trim();
+
+  var parts = [];
+  if (from) parts.push('Откуда: ' + from);
+  if (to)   parts.push('Куда: ' + to);
+  if (type) parts.push('Груз: ' + type);
+  if (w)    parts.push('Вес: ' + w + ' кг');
+
+  if (parts.length > 0) {
+    var text = 'Хочу рассчитать стоимость доставки\n' + parts.join('\n');
+    e.currentTarget.href = 'https://t.me/CARGORAPIDO?text=' + encodeURIComponent(text);
+  } else {
+    e.currentTarget.href = 'https://t.me/CARGORAPIDO';
+  }
+}
