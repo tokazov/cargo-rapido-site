@@ -156,6 +156,13 @@ def build_post_html(title: str, description: str, slug: str, content_html: str,
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/style.css">
+  <style>
+    @media (max-width: 768px) {{
+      .post-layout {{ grid-template-columns: 1fr !important; }}
+      .sidebar {{ order: 2; }}
+      .post-content {{ order: 1; }}
+    }}
+  </style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLNDMC75" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -475,7 +482,11 @@ def create_post(title: str, description: str, keywords: str, image: str = 'truck
     print(f'\nGenerating article: {title}')
     content_html = generate_content(title, description, keywords)
 
-    # Убираем H1 если Gemini добавил его (H1 уже в шаблоне)
+    # Убираем markdown-артефакты (```html, ```)
+    content_html = re.sub(r'```html\s*', '', content_html)
+    content_html = re.sub(r'```\s*', '', content_html)
+
+    # Убираем H1 если Claude добавил его (H1 уже в шаблоне)
     content_html = re.sub(r'<h1[^>]*>.*?</h1>', '', content_html, flags=re.DOTALL)
 
     # Добавляем H1 в начало контента
