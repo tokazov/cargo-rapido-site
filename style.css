@@ -235,7 +235,7 @@ footer {
   padding: 60px; margin-top: auto;
 }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-.footer-brand .logo { color: white; margin-bottom: 16px; }
+.footer-brand .logo { color: white; margin-bottom: 16px; display: inline-block; background: white; padding: 8px 12px; border-radius: 10px; }
 .footer-brand .logo-box { background: rgba(255,255,255,0.15); }
 .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55); max-width: 280px; }
 .footer-col h4 { font-size: 14px; font-weight: 800; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
