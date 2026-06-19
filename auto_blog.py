@@ -382,6 +382,73 @@ def update_blog_index(title: str, description: str, slug: str, image: str = 'tru
     index_path.write_text(index)
     print(f'  blog index updated')
 
+# ─── LINK VALIDATOR ───────────────────────────────────────────────────────────
+# Все реально существующие страницы сайта
+VALID_PATHS = {
+    '/', '/about/', '/nashi-uslugi/', '/kontakty/', '/poleznaya-informaciya/',
+    '/politika-konfidencialnosti/', '/usloviya-okazaniya-uslug/', '/sitemap.xml',
+    '/perevozka-kommercheskih-gruzov/', '/perevozka-lichnyh-veshchej/',
+    '/dostavka-v-evropu/', '/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/',
+    '/perevozka-gruzov-pod-termorezhimom/', '/perevozka-avtomobilya-na-avtovoze/',
+    '/perevozka-avtomobilya-na-evakuatore/', '/skladskie-uslugi/',
+    '/brokerskie-uslugi/', '/otzyvy/', '/soglasie-na-obrabotku/',
+}
+
+# Карта ближайших замен для несуществующих путей
+FALLBACK_MAP = {
+    '/tamozhennoe-oformlenie/': '/brokerskie-uslugi/',
+    '/tamozhnya/': '/brokerskie-uslugi/',
+    '/customs/': '/brokerskie-uslugi/',
+    '/tarify/': '/perevozka-kommercheskih-gruzov/',
+    '/prices/': '/perevozka-kommercheskih-gruzov/',
+    '/avtozov/': '/perevozka-avtomobilya-na-avtovoze/',
+    '/avtovoz/': '/perevozka-avtomobilya-na-avtovoze/',
+    '/lichnye-veshchi/': '/perevozka-lichnyh-veshchej/',
+    '/perevozka-lichnyx-veshhej/': '/perevozka-lichnyh-veshchej/',
+    '/sborny-gruz/': '/perevozka-kommercheskih-gruzov/',
+    '/sbornyj-gruz/': '/perevozka-kommercheskih-gruzov/',
+    '/evropa/': '/dostavka-v-evropu/',
+    '/blog/': '/poleznaya-informaciya/',
+}
+
+def validate_and_fix_links(html: str) -> tuple[str, list]:
+    """Проверяет все внутренние href в HTML и заменяет 404 на валидные."""
+    issues = []
+    def replace_href(m):
+        href = m.group(1)
+        # Пропускаем внешние ссылки, якоря, mailto, tel
+        if href.startswith(('http', 'mailto:', 'tel:', '#', '//')):
+            return m.group(0)
+        # Пропускаем статичные файлы
+        if any(href.endswith(ext) for ext in ('.css', '.js', '.ico', '.png', '.jpg', '.xml', '.json')):
+            return m.group(0)
+        # Проверяем путь
+        if href in VALID_PATHS:
+            return m.group(0)
+        # Ищем в карте замен
+        if href in FALLBACK_MAP:
+            fixed = FALLBACK_MAP[href]
+            issues.append(f'  replaced: {href} → {fixed}')
+            return f'href="{fixed}"'
+        # Проверяем через HTTP (только для неизвестных путей)
+        try:
+            code = urllib.request.urlopen(
+                urllib.request.Request(SITE_URL + href, method='HEAD'),
+                timeout=5
+            ).getcode()
+            if code == 200:
+                VALID_PATHS.add(href)
+                return m.group(0)
+        except Exception:
+            pass
+        # Не нашли — заменяем на главную блога
+        fixed = '/poleznaya-informaciya/'
+        issues.append(f'  broken (404): {href} → {fixed}')
+        return f'href="{fixed}"'
+
+    html = re.sub(r'href="([^"]*)"', replace_href, html)
+    return html, issues
+
 # ─── GIT PUSH ─────────────────────────────────────────────────────────────────
 def git_push(message: str):
     env = os.environ.copy()
@@ -417,6 +484,16 @@ def create_post(title: str, description: str, keywords: str, image: str = 'truck
     content_html = f'<h1>{title}</h1>\n' + content_html
 
     html = build_post_html(title, description, slug, content_html, keywords, image)
+
+    # Валидация ссылок
+    html, link_issues = validate_and_fix_links(html)
+    if link_issues:
+        print('  link fixes:')
+        for issue in link_issues:
+            print(issue)
+    else:
+        print('  links: all OK')
+
     post_dir.mkdir(parents=True, exist_ok=True)
     (post_dir / 'index.html').write_text(html, encoding='utf-8')
     print(f'  written: {post_dir}/index.html')
