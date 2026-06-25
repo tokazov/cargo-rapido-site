@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои заявки — Cargo Rapido</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #E53935;
+      --red-dark: #C62828;
+      --bg: #0a0a0a;
+      --bg2: #111;
+      --border: rgba(255,255,255,0.09);
+      --muted: #9ca3af;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; min-height: 100vh; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); height: 64px; display: flex; align-items: center; }
+    .navbar-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: var(--red); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; color: #fff; }
+    .logo-text { font-size: 17px; font-weight: 800; color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .user-chip { font-size: 13px; color: var(--muted); }
+
+    /* TOAST */
+    .toast { position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 999; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; box-shadow: 0 8px 32px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 10px; animation: slideDown .35s ease; max-width: 90vw; }
+    .toast-success { background: #1a3a1a; border: 1px solid rgba(34,197,94,0.4); color: #4ade80; }
+    .toast-error { background: #3a1a1a; border: 1px solid rgba(239,68,68,0.4); color: #f87171; }
+    @keyframes slideDown { from { opacity:0; transform: translateX(-50%) translateY(-12px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+
+    /* PAGE */
+    .page { padding: 84px 24px 60px; max-width: 900px; margin: 0 auto; }
+    .page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+    .page-header h1 { font-size: 26px; font-weight: 900; }
+    .page-header p { color: var(--muted); font-size: 14px; margin-top: 5px; }
+    .btn-new { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; font-weight: 700; padding: 11px 22px; border-radius: 12px; text-decoration: none; font-size: 14px; transition: background .2s; }
+    .btn-new:hover { background: var(--red-dark); }
+
+    /* STATS */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+    .stat-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 16px; padding: 20px 18px; }
+    .stat-icon { font-size: 22px; margin-bottom: 10px; }
+    .stat-val { font-size: 28px; font-weight: 900; }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* FILTERS */
+    .filter-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; background: rgba(255,255,255,0.04); color: var(--muted); font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all .2s; }
+    .filter-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+    .filter-btn:hover:not(.active) { border-color: rgba(255,255,255,0.25); color: #fff; }
+
+    /* BOOKING CARD */
+    .booking-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 12px; transition: border-color .2s; }
+    .booking-card.expanded { border-color: rgba(229,57,53,0.35); }
+    .booking-main { padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; }
+    .booking-main:hover { background: rgba(255,255,255,0.02); }
+    .booking-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+    .route-icon { font-size: 28px; }
+    .booking-num { font-size: 11px; font-weight: 700; color: var(--red); margin-bottom: 3px; }
+    .booking-route { font-size: 15px; font-weight: 700; }
+    .booking-meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .booking-right { text-align: right; flex-shrink: 0; }
+    .booking-price { font-size: 20px; font-weight: 900; }
+    .booking-currency { font-size: 12px; color: var(--muted); }
+    .status-badge { display: inline-block; padding: 3px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-top: 5px; }
+
+    /* BOOKING DETAIL */
+    .booking-detail { border-top: 1px solid var(--border); padding: 20px; background: rgba(255,255,255,0.02); display: none; }
+    .booking-detail.show { display: block; }
+    .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 18px; }
+    .detail-item label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+    .detail-item span { font-size: 14px; font-weight: 600; }
+    .action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .btn-action { display: inline-flex; align-items: center; gap: 7px; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; border: 1px solid; transition: all .2s; text-decoration: none; white-space: nowrap; }
+    .btn-pay { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn-pay:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-pay:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: #d1d5db; border-color: var(--border); }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+    .info-box { padding: 12px 16px; border-radius: 10px; font-size: 13px; margin-top: 14px; }
+    .info-pending { background: rgba(234,179,8,0.07); border: 1px solid rgba(234,179,8,0.2); color: #fbbf24; }
+    .info-paid { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.2); color: #4ade80; }
+    .info-failed { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); color: #f87171; }
+
+    /* EMPTY */
+    .empty { text-align: center; padding: 80px 0; }
+    .empty-icon { font-size: 52px; margin-bottom: 16px; }
+    .empty h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .empty p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+    /* SPINNER */
+    .spinner { display: flex; justify-content: center; padding: 60px 0; }
+    .spin { width: 36px; height: 36px; border: 3px solid rgba(229,57,53,0.15); border-top-color: var(--red); border-radius: 50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media(max-width: 700px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .detail-grid { grid-template-columns: 1fr 1fr; }
+      .booking-main { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">CR</div>
+      <span class="logo-text">Cargo Rapido</span>
+    </a>
+    <div class="nav-right">
+      <span class="user-chip" id="userChip"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1>Мои заявки</h1>
+      <p id="pageSubtitle">Отслеживайте статус и оплачивайте доставки</p>
+    </div>
+    <a href="/#form-section" class="btn-new">➕ Новая заявка</a>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon">📋</div><div class="stat-val" id="sTot">—</div><div class="stat-label">Всего заявок</div></div>
+    <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-val" id="sPend">—</div><div class="stat-label">Ожидают оплаты</div></div>
+    <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-val" id="sPaid">—</div><div class="stat-label">Оплачено</div></div>
+    <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-val" id="sSpent">—</div><div class="stat-label">Оплачено всего</div></div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-row" id="filterRow"></div>
+
+  <!-- BOOKINGS LIST -->
+  <div id="bookingsList">
+    <div class="spinner"><div class="spin"></div></div>
+  </div>
+</div>
+
+<script>
+// ─── CONFIG ────────────────────────────────────────────────────────────────
+const API = 'https://cargo-rapido-api.up.railway.app/api/v1';
+
+const STATUS_MAP = {
+  pending:   { label: '⏳ Ожидает',    style: 'background:rgba(234,179,8,0.15);color:#fbbf24' },
+  confirmed: { label: '✅ Подтверждено', style: 'background:rgba(59,130,246,0.15);color:#60a5fa' },
+  cancelled: { label: '❌ Отменено',   style: 'background:rgba(239,68,68,0.15);color:#f87171' },
+};
+const PAYMENT_MAP = {
+  pending: { label: 'Не оплачено',  style: 'background:rgba(234,179,8,0.12);color:#fbbf24' },
+  paid:    { label: '💳 Оплачено',   style: 'background:rgba(34,197,94,0.15);color:#4ade80' },
+  failed:  { label: '⚠️ Ошибка оплаты', style: 'background:rgba(239,68,68,0.15);color:#f87171' },
+};
+
+let allBookings = [];
+let filterStatus = 'all';
+let expandedId = null;
+let clientPhone = null;
+
+// ─── TOAST ─────────────────────────────────────────────────────────────────
+function showToast(msg, type = 'success', ms = 4500) {
+  document.querySelectorAll('.toast').forEach(t => t.remove());
+  const el = document.createElement('div');
+  el.className = `toast toast-${type}`;
+  el.innerHTML = `<span>${type === 'success' ? '✅' : '❌'}</span> ${msg}`;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), ms);
+}
+
+// ─── CHECK URL PARAMS (после оплаты) ───────────────────────────────────────
+function checkPaymentResult() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment') === 'success') {
+    showToast('Оплата прошла успешно! Менеджер свяжется с вами.', 'success', 6000);
+    window.history.replaceState({}, '', window.location.pathname);
+  } else if (params.get('payment') === 'failed') {
+    showToast('Оплата не прошла. Попробуйте ещё раз.', 'error', 6000);
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+}
+
+// ─── LOAD BOOKINGS (by phone stored in localStorage) ───────────────────────
+async function loadBookings() {
+  clientPhone = localStorage.getItem('cr_phone');
+  if (!clientPhone) {
+    renderNoAuth();
+    return;
+  }
+  document.getElementById('userChip').textContent = clientPhone;
+
+  try {
+    const r = await fetch(`${API}/bookings/by-phone/${encodeURIComponent(clientPhone)}`);
+    if (!r.ok) throw new Error('api error');
+    allBookings = await r.json();
+    updateStats();
+    renderFilters();
+    renderBookings();
+  } catch {
+    document.getElementById('bookingsList').innerHTML =
+      '<p style="color:var(--muted);padding:32px 0;text-align:center">Ошибка загрузки. Обновите страницу.</p>';
+  }
+}
+
+// ─── STATS ─────────────────────────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('sTot').textContent = allBookings.length;
+  document.getElementById('sPend').textContent = allBookings.filter(b => b.payment_status === 'pending' && b.status !== 'cancelled').length;
+  document.getElementById('sPaid').textContent = allBookings.filter(b => b.payment_status === 'paid').length;
+  const spent = allBookings.filter(b => b.payment_status === 'paid').reduce((s, b) => s + b.price_amount, 0);
+  document.getElementById('sSpent').textContent = spent > 0 ? Math.round(spent).toLocaleString() + ' ' + (allBookings[0]?.price_currency || 'GEL') : '0';
+}
+
+// ─── FILTERS ────────────────────────────────────────────────────────────────
+function renderFilters() {
+  const counts = {};
+  allBookings.forEach(b => { counts[b.status] = (counts[b.status] || 0) + 1; });
+  const filters = [
+    ['all', 'Все', allBookings.length],
+    ['pending',   'Ожидает',      counts.pending   || 0],
+    ['confirmed', 'Подтверждено', counts.confirmed || 0],
+    ['cancelled', 'Отменено',     counts.cancelled || 0],
+  ];
+  document.getElementById('filterRow').innerHTML = filters.map(([s, l, c]) =>
+    `<button class="filter-btn ${filterStatus === s ? 'active' : ''}" onclick="setFilter('${s}')">${l} (${c})</button>`
+  ).join('');
+}
+
+function setFilter(s) { filterStatus = s; renderFilters(); renderBookings(); }
+
+// ─── RENDER BOOKINGS ────────────────────────────────────────────────────────
+function renderBookings() {
+  const items = filterStatus === 'all' ? allBookings : allBookings.filter(b => b.status === filterStatus);
+  if (!items.length) {
+    document.getElementById('bookingsList').innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">📦</div>
+        <h3>${filterStatus === 'all' ? 'Заявок пока нет' : 'Нет заявок в этом статусе'}</h3>
+        <p>${filterStatus === 'all' ? 'Оформите первую доставку' : 'Попробуйте другой фильтр'}</p>
+        ${filterStatus === 'all' ? '<a href="/#form-section" style="display:inline-block;background:var(--red);color:#fff;font-weight:700;padding:12px 28px;border-radius:12px;text-decoration:none;font-size:14px">Создать заявку</a>' : ''}
+      </div>`;
+    return;
+  }
+  document.getElementById('bookingsList').innerHTML = items.map(cardHtml).join('');
+}
+
+function cardHtml(b) {
+  const st = STATUS_MAP[b.status] || STATUS_MAP.pending;
+  const pm = PAYMENT_MAP[b.payment_status] || PAYMENT_MAP.pending;
+  const expanded = expandedId === b.id;
+  const canPay = b.payment_status === 'pending' && b.status !== 'cancelled';
+  const fmtDate = iso => new Date(iso).toLocaleDateString('ru-RU', { day:'numeric', month:'short', year:'numeric' });
+
+  return `
+  <div class="booking-card ${expanded ? 'expanded' : ''}" id="bc${b.id}">
+    <div class="booking-main" onclick="toggle(${b.id})">
+      <div class="booking-left">
+        <div class="route-icon">🚛</div>
+        <div>
+          <div class="booking-num">${b.booking_number}</div>
+          <div class="booking-route">${b.origin_city} → ${b.destination_city}</div>
+          <div class="booking-meta">${fmtDate(b.created_at)}${b.weight_kg ? ' · ' + b.weight_kg + ' кг' : ''}</div>
+        </div>
+      </div>
+      <div class="booking-right">
+        <div class="booking-price">${Math.round(b.price_amount).toLocaleString()}</div>
+        <div class="booking-currency">${b.price_currency}</div>
+        <span class="status-badge" style="${pm.style}">${pm.label}</span>
+      </div>
+    </div>
+
+    <div class="booking-detail ${expanded ? 'show' : ''}" id="bd${b.id}">
+      <div class="detail-grid">
+        <div class="detail-item"><label>Откуда</label><span>${b.origin_city}</span></div>
+        <div class="detail-item"><label>Куда</label><span>${b.destination_city}</span></div>
+        <div class="detail-item"><label>Статус заявки</label><span class="status-badge" style="${st.style}">${st.label}</span></div>
+        ${b.weight_kg ? `<div class="detail-item"><label>Вес</label><span>${b.weight_kg} кг</span></div>` : ''}
+        ${b.cargo_description ? `<div class="detail-item" style="grid-column:1/-1"><label>Груз</label><span>${b.cargo_description}</span></div>` : ''}
+      </div>
+
+      <div class="action-row">
+        ${canPay ? `<button class="btn-action btn-pay" id="pay-btn-${b.id}" onclick="payBooking(${b.id}, this)">💳 Оплатить ${Math.round(b.price_amount).toLocaleString()} ${b.price_currency}</button>` : ''}
+        <a href="https://t.me/CargoRapidoBot?start=booking_${b.booking_number}" class="btn-action btn-secondary" target="_blank">💬 Написать менеджеру</a>
+      </div>
+
+      ${b.payment_status === 'pending' && b.status === 'confirmed'
+        ? `<div class="info-box info-pending">⏳ Заявка подтверждена — нажмите «Оплатить» чтобы завершить оформление.</div>`
+        : b.payment_status === 'pending' && b.status === 'pending'
+        ? `<div class="info-box info-pending">⏳ Ожидаем подтверждения от менеджера. Обычно в течение 1–2 часов.</div>`
+        : b.payment_status === 'paid'
+        ? `<div class="info-box info-paid">✅ Оплата получена. Менеджер свяжется для уточнения деталей доставки.</div>`
+        : b.payment_status === 'failed'
+        ? `<div class="info-box info-failed">❌ Оплата не прошла. Попробуйте ещё раз или свяжитесь с менеджером.</div>`
+        : ''}
+    </div>
+  </div>`;
+}
+
+// ─── TOGGLE EXPAND ──────────────────────────────────────────────────────────
+function toggle(id) {
+  expandedId = expandedId === id ? null : id;
+  renderBookings();
+}
+
+// ─── PAY ────────────────────────────────────────────────────────────────────
+async function payBooking(bookingId, btn) {
+  btn.disabled = true;
+  btn.textContent = '⏳ Подключение...';
+  try {
+    const r = await fetch(`${API}/bookings/${bookingId}/payment/`, { method: 'POST' });
+    const d = await r.json();
+    if (r.ok && d.checkout_url) {
+      window.location.href = d.checkout_url;
+    } else {
+      showToast(d.detail || 'Ошибка при создании оплаты', 'error');
+      btn.disabled = false;
+      btn.textContent = '💳 Оплатить';
+    }
+  } catch {
+    showToast('Ошибка соединения. Попробуйте ещё раз.', 'error');
+    btn.disabled = false;
+    btn.textContent = '💳 Оплатить';
+  }
+}
+
+// ─── NO AUTH ────────────────────────────────────────────────────────────────
+function renderNoAuth() {
+  document.getElementById('bookingsList').innerHTML = `
+    <div class="empty">
+      <div class="empty-icon">🔐</div>
+      <h3>Введите номер телефона</h3>
+      <p>Для просмотра заявок укажите телефон, с которым оформляли доставку</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:8px;flex-wrap:wrap">
+        <input id="phoneInput" type="tel" placeholder="+7 999 000 00 00"
+          style="padding:11px 16px;background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:10px;color:#fff;font-size:14px;font-family:inherit;width:220px"
+          onkeydown="if(event.key==='Enter')authPhone()">
+        <button onclick="authPhone()" class="btn-action btn-pay" style="padding:11px 20px">Войти</button>
+      </div>
+    </div>`;
+  // also hide stats since no data
+  document.querySelectorAll('.stats-grid, #filterRow').forEach(el => el.style.display = 'none');
+}
+
+function authPhone() {
+  const phone = document.getElementById('phoneInput')?.value?.trim();
+  if (!phone || phone.length < 7) { showToast('Введите корректный номер телефона', 'error'); return; }
+  localStorage.setItem('cr_phone', phone);
+  location.reload();
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+checkPaymentResult();
+loadBookings();
+</script>
+</body>
+</html>
