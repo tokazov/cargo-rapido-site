@@ -195,16 +195,28 @@
 <body>
 
 <!-- NAV -->
-<header style="position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 12px rgba(0,0,0,.08)">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px">
-    <a href="/"><img src="/logo.jpg" alt="Cargo Rapido" style="height:44px;width:auto"></a>
-    <nav style="display:flex;gap:28px;align-items:center">
-      <a href="/nashi-uslugi/" style="color:#374151;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s" onmouseover="this.style.color='#1a237e'" onmouseout="this.style.color='#374151'">Услуги</a>
-      <a href="/poleznaya-informaciya/" style="color:#374151;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s" onmouseover="this.style.color='#1a237e'" onmouseout="this.style.color='#374151'">Блог</a>
-      <a href="/kontakty/" style="color:#374151;text-decoration:none;font-size:14px;font-weight:600;transition:color .2s" onmouseover="this.style.color='#1a237e'" onmouseout="this.style.color='#374151'">Контакты</a>
-      <a href="#form" class="sbr-btn-main" style="padding:10px 22px;font-size:14px">Получить расчёт</a>
-    </nav>
-  </div>
+<header class="header">
+  <a href="/" class="logo"><img src="/logo.jpg" alt="Cargo Rapido" style="height:44px;width:auto"></a>
+  <nav class="nav">
+    <div class="dropdown">
+      <a href="/nashi-uslugi/">Услуги ▾</a>
+      <div class="dropdown-menu">
+        <a href="/perevozka-kommercheskih-gruzov/">Коммерческие грузы</a>
+        <a href="/perevozka-lichnyh-veshchej/">Личные вещи</a>
+        <a href="/sbornyj-gruz/" style="font-weight:700;color:#ff6f00">Сборные грузы</a>
+        <a href="/dostavka-v-evropu/">Доставка в Европу</a>
+        <a href="/dostavka-posylok-pisem-i-dokumentov-po-vsemu-miru/">Посылки и документы</a>
+        <a href="/perevozka-gruzov-pod-termorezhimom/">Термо-режим</a>
+        <a href="/skladskie-uslugi/">Складские услуги</a>
+        <a href="/brokerskie-uslugi/">Брокерские услуги</a>
+        <a href="/perevozka-avtomobilya-na-avtovoze/">Перевозка авто на автовозе</a>
+      </div>
+    </div>
+    <a href="/poleznaya-informaciya/">Блог</a>
+    <a href="/kontakty/">Контакты</a>
+    <a href="https://wa.me/995568644615" class="nav-phone"><i class="fab fa-whatsapp" style="color:#25D366"></i> +995 568 644 615</a>
+    <a href="https://t.me/CARGORAPIDO" target="_blank" class="nav-phone nav-cta">Заявка</a>
+  </nav>
 </header>
 
 <!-- HERO -->
