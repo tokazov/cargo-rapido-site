@@ -59,9 +59,12 @@ import random as _random
 def pick_cover_photo(title: str, keywords: str) -> str:
     """Выбирает тематическую обложку для статьи."""
     text = (title + ' ' + keywords).lower()
+    matched = []
     for theme, photos in PHOTO_THEMES.items():
         if theme in text:
-            return _random.choice(photos)
+            matched.extend(photos)
+    if matched:
+        return _random.choice(list(dict.fromkeys(matched)))
     return _random.choice(PHOTOS_ALL)
 
 def pick_inline_photos(title: str, keywords: str, count: int = 2) -> list:
