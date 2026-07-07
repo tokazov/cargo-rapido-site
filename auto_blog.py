@@ -25,6 +25,59 @@ SITE_URL = 'https://cargorapido.com'
 TODAY = str(date.today())
 
 # Тематика: только то что касается Cargo Rapido
+# ─── ТЕМАТИЧЕСКИЕ ФОТО ───────────────────────────────────────────────────────
+# Маппинг тем → список фотографий (рандомно выбирается одна для карточки и несколько для статьи)
+PHOTO_THEMES = {
+    'таможня': ['customs.jpg', 'broker-docs.jpg', 'documents.jpg', 'broker-calc.jpg', 'broker-handshake.jpg'],
+    'broker': ['broker-docs.jpg', 'broker-calc.jpg', 'broker-handshake.jpg', 'broker-meeting.jpg', 'broker-tablet.jpg'],
+    'авиа': ['svc-airfreight.jpg', 'blog-avia.jpg', 'photo2-airfreight.jpg'],
+    'европа': ['blog-europe.jpg', 'europe-delivery.jpg', 'photo2-highway.jpg', 'photo2-truck-modern.jpg'],
+    'россия': ['blog-russia.jpg', 'photo-trucks-winter.jpg', 'photo2-truck-red.jpg', 'hero-truck.jpg'],
+    'санкции': ['blog-sanctions.jpg', 'documents.jpg', 'broker-docs.jpg'],
+    'личные': ['blog-personal.jpg', 'personal-items.jpg', 'photo2-mover.jpg', 'svc-movers-carry.jpg', 'svc-movers-blue.jpg'],
+    'мебель': ['svc-movers-carry.jpg', 'svc-movers-blue.jpg', 'svc-movers-van.jpg', 'photo2-mover.jpg'],
+    'переезд': ['svc-movers-carry.jpg', 'svc-movers-blue.jpg', 'photo2-mover.jpg', 'svc-movers-van.jpg'],
+    'сборные': ['blog-sborny.jpg', 'commercial-cargo.jpg', 'photo-containers.jpg', 'photo-loading.jpg'],
+    'автомобил': ['car-transport.jpg', 'photo-autovoz.jpg', 'photo-evacuator.jpg'],
+    'склад': ['warehouse.jpg', 'photo-warehouse-big.jpg', 'photo-warehouse2.jpg', 'photo-loading.jpg'],
+    'термо': ['reefer.jpg', 'reefer-truck.jpg', 'reefer-fleet.jpg'],
+    'посылк': ['photo-parcel.jpg', 'photo-parcel-hand.jpg', 'svc-courier-box.jpg', 'photo2-courier.jpg'],
+    'документ': ['documents.jpg', 'photo2-documents.jpg', 'broker-docs.jpg'],
+    'упаковк': ['svc-packing.jpg', 'photo2-unloading.jpg', 'photo-loading.jpg'],
+    'ларс': ['hero-truck.jpg', 'photo-trucks-winter.jpg', 'photo2-highway.jpg', 'photo-truck-city.jpg'],
+    'турция': ['blog-turkey.jpg', 'photo2-highway.jpg'],
+    'доставка': ['photo-delivery-door.jpg', 'photo-delivery-sign.jpg', 'photo2-delivery.jpg', 'svc-delivery-sign.jpg'],
+}
+PHOTOS_ALL = [
+    'truck.jpg', 'hero-truck.jpg', 'hero-main.jpg', 'commercial-cargo.jpg',
+    'photo-truck-city.jpg', 'photo2-truck-modern.jpg', 'photo2-highway.jpg',
+    'photo-worker.jpg', 'photo-handshake.jpg', 'about-team.jpg',
+]
+
+import random as _random
+
+def pick_cover_photo(title: str, keywords: str) -> str:
+    """Выбирает тематическую обложку для статьи."""
+    text = (title + ' ' + keywords).lower()
+    for theme, photos in PHOTO_THEMES.items():
+        if theme in text:
+            return _random.choice(photos)
+    return _random.choice(PHOTOS_ALL)
+
+def pick_inline_photos(title: str, keywords: str, count: int = 2) -> list:
+    """Выбирает несколько тематических фото для вставки в текст."""
+    text = (title + ' ' + keywords).lower()
+    candidates = []
+    for theme, photos in PHOTO_THEMES.items():
+        if theme in text:
+            candidates.extend(photos)
+    # Уникальные + рандом
+    candidates = list(dict.fromkeys(candidates))
+    if len(candidates) < count:
+        candidates.extend(PHOTOS_ALL)
+    _random.shuffle(candidates)
+    return candidates[:count]
+
 TOPIC_CONTEXT = """
 Cargo Rapido — транспортно-логистическая компания в Тбилиси (Грузия).
 Специализация: грузоперевозки Грузия ↔ Россия ↔ СНГ ↔ Европа.
@@ -327,7 +380,22 @@ def generate_ideas(n: int = 5) -> list:
     return json.loads(response[start:end])
 
 # ─── GENERATE ARTICLE CONTENT ─────────────────────────────────────────────────
-def generate_content(title: str, description: str, keywords: str) -> str:
+def generate_content(title: str, description: str, keywords: str, inline_photos: list = None) -> str:
+    # Формируем блок с инструкцией по фото
+    photo_instructions = ''
+    if inline_photos:
+        photo_list = '\n'.join([f'  - /{p}' for p in inline_photos])
+        photo_instructions = f"""
+10. ФОТО В ТЕКСТЕ: вставь {len(inline_photos)} изображения в статью — по одному после 1-го и 3-го H2.
+    Используй ровно эти файлы (в указанном порядке):
+{photo_list}
+    Формат вставки:
+    <figure style="margin:24px 0;border-radius:12px;overflow:hidden;">
+      <img src="/FILENAME.jpg" alt="ОПИСАНИЕ" style="width:100%;height:260px;object-fit:cover;display:block;">
+      <figcaption style="padding:8px 12px;font-size:13px;color:#666;background:#f8f9ff;">ПОДПИСЬ</figcaption>
+    </figure>
+"""
+
     prompt = f"""{TOPIC_CONTEXT}
 
 Напиши статью для блога cargorapido.com.
@@ -345,7 +413,7 @@ Meta description: {description}
 6. FAQ в конце: 3-4 вопроса которые реально задают клиенты
 7. Schema FAQPage разметка для FAQ — добавь отдельным <script type="application/ld+json"> в конце
 8. Язык: профессиональный, живой, не канцелярский
-9. Объём: 700-1000 слов
+9. Объём: 700-1000 слов{photo_instructions}
 
 Верни ТОЛЬКО HTML контент (от <h1> до последнего </script>). Без DOCTYPE, head, body.
 """
@@ -472,15 +540,21 @@ def git_push(message: str):
         print('  nothing to push')
 
 # ─── MAIN: CREATE ONE POST ─────────────────────────────────────────────────────
-def create_post(title: str, description: str, keywords: str, image: str = 'truck.jpg'):
+def create_post(title: str, description: str, keywords: str, image: str = None):
     slug = make_slug(title)
     post_dir = BASE / 'poleznaya-informaciya' / 'post' / slug
     if post_dir.exists():
         print(f'Post already exists: {slug}')
         return slug
 
+    # Подбираем тематические фото
+    cover = image or pick_cover_photo(title, keywords)
+    inline_photos = pick_inline_photos(title, keywords, count=2)
+    # Убираем обложку из inline чтоб не повторялась
+    inline_photos = [p for p in inline_photos if p != cover][:2]
     print(f'\nGenerating article: {title}')
-    content_html = generate_content(title, description, keywords)
+    print(f'  cover: {cover} | inline: {inline_photos}')
+    content_html = generate_content(title, description, keywords, inline_photos=inline_photos)
 
     # Убираем markdown-артефакты (```html, ```)
     content_html = re.sub(r'```html\s*', '', content_html)
@@ -492,7 +566,7 @@ def create_post(title: str, description: str, keywords: str, image: str = 'truck
     # Добавляем H1 в начало контента
     content_html = f'<h1>{title}</h1>\n' + content_html
 
-    html = build_post_html(title, description, slug, content_html, keywords, image)
+    html = build_post_html(title, description, slug, content_html, keywords, cover)
 
     # Валидация ссылок
     html, link_issues = validate_and_fix_links(html)
@@ -508,7 +582,7 @@ def create_post(title: str, description: str, keywords: str, image: str = 'truck
     print(f'  written: {post_dir}/index.html')
 
     update_sitemap(slug)
-    update_blog_index(title, description, slug, image)
+    update_blog_index(title, description, slug, cover)
     git_push(f'blog: add {slug}')
     print(f'  DONE: {SITE_URL}/poleznaya-informaciya/post/{slug}/')
     return slug
