@@ -362,9 +362,34 @@ function copyLink(btn) {{
 </html>'''
 
 # ─── GENERATE ARTICLE IDEAS ───────────────────────────────────────────────────
-def generate_ideas(n: int = 5) -> list:
-    prompt = f"""{TOPIC_CONTEXT}
+def get_existing_titles() -> list:
+    """Читает заголовки уже опубликованных статей из их HTML файлов."""
+    posts_dir = BASE / 'poleznaya-informaciya' / 'post'
+    titles = []
+    if posts_dir.exists():
+        for post_dir in sorted(posts_dir.iterdir()):
+            idx = post_dir / 'index.html'
+            if idx.exists():
+                try:
+                    content = idx.read_text(encoding='utf-8')
+                    # Берём <title> тег
+                    m = re.search(r'<title>([^<|]+)', content)
+                    if m:
+                        titles.append(m.group(1).strip())
+                except Exception:
+                    titles.append(post_dir.name)
+    return titles
 
+
+def generate_ideas(n: int = 5) -> list:
+    existing = get_existing_titles()
+    existing_block = ''
+    if existing:
+        existing_block = '\n\nУЖЕ ОПУБЛИКОВАННЫЕ СТАТЬИ (не повторять эти темы и не писать похожее):\n'
+        existing_block += '\n'.join(f'- {t}' for t in existing)
+        existing_block += '\n\nГенерируй ТОЛЬКО новые темы которых ещё нет в блоге.\n'
+
+    prompt = f"""{TOPIC_CONTEXT}{existing_block}
 Дата сегодня: {TODAY}
 
 Сгенерируй {n} идей для статей блога cargorapido.com.
