@@ -605,6 +605,20 @@ def create_post(title: str, description: str, keywords: str, image: str = None):
     else:
         print('  links: all OK')
 
+    # Валидация и чистка JSON-LD блоков
+    import json as _json
+    ld_pattern = re.compile(r'(<script[^>]+type="application/ld\+json"[^>]*>)(.*?)(</script>)', re.DOTALL)
+    def fix_ld_block(m):
+        raw = m.group(2)
+        try:
+            _json.loads(raw.strip())
+            return m.group(0)  # OK
+        except _json.JSONDecodeError:
+            # Убираем сломанный блок
+            print(f'  WARNING: removed broken JSON-LD block')
+            return ''
+    html = ld_pattern.sub(fix_ld_block, html)
+
     post_dir.mkdir(parents=True, exist_ok=True)
     (post_dir / 'index.html').write_text(html, encoding='utf-8')
     print(f'  written: {post_dir}/index.html')
